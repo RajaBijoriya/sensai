@@ -5,6 +5,16 @@ import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { howItWorks } from "@/data/howItWorks";
 import { testimonial } from "@/data/testimonial";
+import { faqs } from "@/data/faqs";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+
 
 export default function Home() {
   return (
@@ -131,6 +141,53 @@ export default function Home() {
                 </CardContent>
               </Card>
             ))}
+          </div>
+        </div>
+      </section>
+      <section className="w-full py-12 md:py-24 lg:py-32 bg-background">
+        <div className="container mx-auto px-4 md:px-6">
+          {" "}
+          {/* FIXED HERE */}
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <h2 className="text-3xl font-bold  mb-4">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-muted-foreground">
+              Find answers to common questions about our platform
+            </p>
+          </div>
+          <div className=" max-w-6xl mx-auto">
+            <Accordion type="single" collapsible>
+              {faqs.map((item, index) => {
+                return (
+                  <AccordionItem key={index} value={item}>
+                    <AccordionTrigger>{item.question}</AccordionTrigger>
+                    <AccordionContent>{item.answer}</AccordionContent>
+                  </AccordionItem>
+                );
+              })}
+            </Accordion>
+          </div>
+        </div>
+      </section>
+      <section className="w-full">
+        <div className="mx-auto py-24 bg-gradient-to-b from-gray-400 via-gray-200 to-gray-600 rounded-lg">
+          <div className="flex flex-col items-center justify-center space-y-4 text-center max-w-3xl mx-auto">
+            <h2 className="text-3xl font-bold tracking-tighter text-primary-foreground sm:text-4xl md:text-5xl">
+              Ready to Accelerate Your Career?
+            </h2>
+            <p className="mx-auto max-w-[600px] text-primary-foreground/80 md:text-xl">
+              Join thousands of professional who are advancing their careers
+              with AI-powered guidance.
+            </p>
+            <Link href="/dashboard" passHref>
+            <Button size="lg"
+            variant="secondary"
+            className="h-11 mt-5 animate-bounce"
+            >
+              Start Your Journey Today <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+            </Link>
           </div>
         </div>
       </section>
