@@ -1,6 +1,6 @@
 import React from 'react'
 
-const layout = ({children}) => {
+const MainLayout = ({children}) => {
 
     // redirect user apter bording 
   return (
@@ -10,4 +10,4 @@ const layout = ({children}) => {
   )
 }
 
-export default layout
+export default MainLayout
