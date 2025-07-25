@@ -1,11 +1,15 @@
-import React from 'react'
+import { redirect } from "next/navigation";
 
-const IndustryInsightsPage = () => {
-  return (
-    <div>
-      
-    </div>
-  )
+const { getUserOnboardingStatus } = require("@/action/user");
+
+const IndustryInsightsPage = async () => {
+  const {isOnboarded} = await getUserOnboardingStatus();
+
+  if(!isOnboarded) {
+    redirect("/onboarding");
+  }
+  return <div>IndustryInsightsPage</div>
+
+
 }
-
-export default IndustryInsightsPage
+export default IndustryInsightsPage;
